@@ -1,0 +1,23 @@
+{
+  "name": "moon-phases",
+  "version": "1.0.0",
+  "description": "A moon phase calendar.",
+  "main": "src/index.js",
+  "dependencies": {
+    "axios": "0.18.0",
+    "classnames": "2.2.6",
+    "date-fns": "1.29.0",
+    "kalendaryo": "1.11.1",
+    "prop-types": "15.6.1",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-scripts": "^2.1.5"
+  },
+  "license": "MIT",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

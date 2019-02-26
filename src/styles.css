@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+* {
+  padding: 0;
+  margin: 0;
+  color: #333;
+  font-family: 'Source Sans Pro', sans-serif;
+  box-sizing: border-box;
+}
+
+button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+.my-calendar {
+  margin: 5% auto;
+  box-shadow: 0 1px 3px #aeaeae;
+  width: 350px;
+}
+
+.my-calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: crimson;
+}
+
+.my-calendar-header span {
+  color: #fff;
+  font-weight: bold;
+}
+
+.my-calendar-body {
+  background-color: #fff;
+}
+
+.week {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.week:not(:first-of-type) {
+  border-top: 1px solid #efefef;
+}
+
+.week.day-labels {
+  background: #f8f8f8;
+}
+
+.day {
+  width: calc(100% / 7);
+  flex-basis: calc(100% / 7);
+  padding: 1rem 0.5rem;
+  text-align: center;
+  cursor: default;
+}
+
+.day[disabled] {
+  color: #dedede;
+  cursor: not-allowed !important;
+  background: inherit !important;
+}
+
+.week:not(.day-labels) .day:not(:last-of-type) {
+  border-right: 1px solid #efefef;
+}
+
+.week:not(.day-labels) .day {
+  cursor: pointer;
+}
+
+.week:not(.day-labels) .day.is-selected.is-selected {
+  background-color: crimson;
+  color: #fff;
+}
+
+.week:not(.day-labels) .day.is-today.is-today {
+  font-weight: bold;
+  color: crimson;
+}
+
+.week:not(.day-labels) .day.is-today.is-today.is-selected {
+  color: #fff;
+}
+
+.week:not(.day-labels) .day:hover {
+  background-color: #f3f3f3;
+}
+
+.app {
+  margin: 50px 10px;
+}
+
+.moon-image-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.moon-image {
+  max-width: 300px;
+  max-height: 300px;
+}
