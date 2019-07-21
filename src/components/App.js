@@ -1,12 +1,13 @@
 import Kalendaryo from 'kalendaryo'
 import React, { Component } from 'react'
 
-import { getMoonApiConfig, getMoonPhases } from '../utils/moon'
+import { getMoonPhase } from '../utils/moon'
 
 import BasicCalendar from './BasicCalendar'
 import MoonPhases from './MoonPhase'
 
 import '../styles.css'
+import { formatDate } from '../utils/dateTime'
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class App extends Component {
 
     this.state = {
       currentMoonPhase: undefined,
-      moonPhasesByMonth: {},
+      moonPhaseByDay: {},
     }
   }
 
@@ -37,34 +38,23 @@ class App extends Component {
     )
   }
 
-  getMoonPhasesKey(month, year) {
-    return `${year}-${month}`
-  }
-
   updateState = async selectedDate => {
-    const { moonPhasesByMonth } = this.state
+    const { moonPhaseByDay } = this.state
 
-    const selectedYear = selectedDate.getFullYear()
-    const selectedMonth = selectedDate.getMonth() + 1
-    const selectedDay = selectedDate.getDate()
+    const moonPhaseKey = formatDate(selectedDate)
 
-    const monthKey = this.getMoonPhasesKey(selectedMonth, selectedYear)
-
-    if (
-      moonPhasesByMonth[selectedMonth] &&
-      moonPhasesByMonth[selectedMonth].length > 0
-    ) {
+    if (moonPhaseByDay[moonPhaseKey]) {
       this.setState({
-        currentMoonPhase: moonPhasesByMonth[monthKey][selectedDay - 1],
+        currentMoonPhase: moonPhaseByDay[moonPhaseKey],
       })
     } else {
-      const newMoonPhases = await getMoonPhases(getMoonApiConfig(selectedDate))
+      const newMoonPhase = await getMoonPhase(selectedDate)
 
       this.setState(prevState => ({
-        currentMoonPhase: newMoonPhases[selectedDay - 1],
-        moonPhasesByMonth: {
-          ...prevState.moonPhasesByMonth,
-          [monthKey]: newMoonPhases,
+        currentMoonPhase: newMoonPhase,
+        moonPhaseByDay: {
+          ...prevState.moonPhaseByDay,
+          [moonPhaseKey]: newMoonPhase,
         },
       }))
     }
