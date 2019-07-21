@@ -4,7 +4,7 @@
 
 ## Demo
 
-[CodeSandbox](https://codesandbox.io/s/v8wmqjn943)
+[CodeSandbox](https://codesandbox.io/s/github/alcar/moon-phases)
 
 ## Acknowledgements
 
