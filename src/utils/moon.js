@@ -19,7 +19,7 @@ export const getMoonPhase = async date => {
 
 const extractMoonPhase = weatherData =>
   /\(([a-z]+(\s[a-z]+)+)\)$/.exec(
-    weatherData.activeElement.children[1].children[0].children[0].attributes
+    weatherData.children[0].children[1].children[0].children[0].attributes
       .desc.value,
   )[1]
 
