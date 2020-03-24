@@ -1,6 +1,6 @@
 {
   "name": "moon-phases",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A moon phase calendar",
   "main": "src/index.js",
   "private": true,
